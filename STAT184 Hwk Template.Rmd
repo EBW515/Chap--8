@@ -1,14 +1,13 @@
 ---
 title: "STAT 184 Homework Exercises" 
-subtitle: "DataComputing Chapters 1 & 2"
-author: "Your Name"
+subtitle: "DataComputing Chapter 8"
+author: "Eric Weah"
 output: html_notebook
 ---
 
 ## Assigned Exercises
 
-- DC Chapter 1 Exercises: 1.1, 1.2, 1.3, 1.4, 1.5  
-- DC Chapter 2 Exercises: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.8, 2.9
+- DC Chapter 8 Exercises: 8.1, 8.2, 8.3 
 
 ## Front Matter
 
@@ -19,24 +18,74 @@ rm(list = ls())
 # all packages used for the assignment
 library(mosaic)
 library(tidyverse)
+library(DataComputing)
 
 ```
 
 
 
-## Chapter 1 Exercises
+## Chapter 8 Exercises
 
-### Problem 1.1
+### Problem 8.1
+1.) Add a layer of glyphs
+2.) Add a layer of glyphs
+3.) construct the graphs frame
+4.) Change the scale of the frame
+5.) Set an axis label
+6.) Divide the frame into facets
+7.) Add a layer of glyphs
+8.)Set an axis label
+9.)Divide the frame into facets
 
 
-### Problem 1.2
 
-[and so forth...]
+### Problem 8.2
+a.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x=wage, fill = sex, color =       sex))+
+  facet_wrap(~married)+
+  geom_density()
+```
+b.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x=age, y = wage , color = sex))+
+  facet_wrap(~married)+
+  geom_smooth()
+```
+c.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x=age, y = wage, color= sex))+
+  facet_wrap(~sector)+
+  geom_smooth()
+```
+### Problem 8.3
+a.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x=age , y= wage))+
+  geom_point()
+```
 
+b.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x=age, y=wage, color = sex))+
+  geom_point()
+```
 
-## Chapter 2 Exercises
-
-### Problem 2.1
-
-[and so forth...]
-
+c.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x = age , y = wage, shape=sex))+
+  facet_grid(married ~ .)+
+  geom_point()
+```
+d.)
+```{r}
+CPS85 %>%
+  ggplot(aes(x= age, y = wage, shape = married))+
+  geom_point()
+```
